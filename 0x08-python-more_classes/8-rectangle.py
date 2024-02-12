@@ -1,18 +1,32 @@
 #!/usr/bin/python3
+"""Rectangle classs"""
 
 
 class Rectangle:
+    """Represent a rectangle.
+
+    Attributes:
+        number_of_instances (int): The number of Rectangle instances.
+        print_symbol (any): The symbol used for string representation.
+    """
+
     number_of_instances = 0
     print_symbol = "#"
 
     def __init__(self, width=0, height=0):
-      
+        """Initialize a new rect obj.
+
+        Args:
+            width : width.
+            height :  height.
+        """
         type(self).number_of_instances += 1
         self.width = width
         self.height = height
 
     @property
     def width(self):
+        """setter and getter width for the object rect"""
         return self.__width
 
     @width.setter
@@ -25,6 +39,7 @@ class Rectangle:
 
     @property
     def height(self):
+        """setter and getter width for the object rect"""
         return self.__height
 
     @height.setter
@@ -36,15 +51,25 @@ class Rectangle:
         self.__height = value
 
     def area(self):
+        """Ret area of Rectangle object"""
         return (self.__width * self.__height)
 
     def perimeter(self):
+        """Ret per of Rectangle object"""
         if self.__width == 0 or self.__height == 0:
             return (0)
         return ((self.__width * 2) + (self.__height * 2))
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
+        """Rect Rectangle.
+
+        Args:
+            rect_1 : firts rectangle.
+            rect_2: sec rect.
+        Raises:
+            TypeError: if ethier are not rect.
+        """
         if not isinstance(rect_1, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")
         if not isinstance(rect_2, Rectangle):
@@ -54,6 +79,7 @@ class Rectangle:
         return (rect_2)
 
     def __str__(self):
+        """Ret per of Rectangle object"""
         if self.__width == 0 or self.__height == 0:
             return ("")
 
@@ -65,10 +91,12 @@ class Rectangle:
         return ("".join(rect))
 
     def __repr__(self):
+        """Ret string represenation of Rectangle object"""
         rect = "Rectangle(" + str(self.__width)
         rect += ", " + str(self.__height) + ")"
         return (rect)
 
     def __del__(self):
+        """print a message for a every rect deleted"""
         type(self).number_of_instances -= 1
         print("Bye rectangle...")

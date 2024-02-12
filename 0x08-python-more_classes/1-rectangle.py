@@ -1,15 +1,23 @@
 #!/usr/bin/python3
+"""Rectangle classs"""
 
 
 class Rectangle:
+    """rectangle."""
 
     def __init__(self, width=0, height=0):
-    
+        """Initialize a new rect obj.
+
+        Args:
+            width : width.
+            height :  height.
+        """
         self.width = width
         self.height = height
 
     @property
     def width(self):
+        """setter and getter width for the object rect"""
         return self.__width
 
     @width.setter
@@ -22,6 +30,7 @@ class Rectangle:
 
     @property
     def height(self):
+        """setter and getter  height for the object rect"""
         return self.__height
 
     @height.setter
