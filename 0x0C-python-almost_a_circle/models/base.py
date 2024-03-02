@@ -1,10 +1,6 @@
 #!/usr/bin/python3
-
 """Defines a base model class."""
 import json
-import csv
-import turtle
-
 
 class Base:
     """base class model.
@@ -12,10 +8,10 @@ class Base:
     This is the represenation base class model for the rest of the models in this project*.
 
     Private Class Attributes:
-        __nb_object (int): represent the number if instation.
+        __nbr_objs (int): represent the number if instation.
     """
 
-    __nb_objects = 0
+    __nbr_objs = 0
 
     def __init__(self, id=None):
         """constructer for the base class.
@@ -26,8 +22,8 @@ class Base:
         if id is not None:
             self.id = id
         else:
-            Base.__nb_objects += 1
-            self.id = Base.__nb_objects
+            Base.__nbr_objs += 1
+            self.id = Base.__nbr_objs
 
     @staticmethod
     def to_json_string(list_dictionaries):
@@ -47,8 +43,8 @@ class Base:
         Args:
             list_objs (list): list of base object.
         """
-        filename = cls.__name__ + ".json"
-        with open(filename, "w") as jsonfile:
+        fname = cls.__name__ + ".json"
+        with open(fname, "w") as jsonfile:
             if list_objs is None:
                 jsonfile.write("[]")
             else:
@@ -94,9 +90,9 @@ class Base:
             incase file doesnt exist - an empty list.
             Otherwise - a list of objects.
         """
-        filename = str(cls.__name__) + ".json"
+        fname = str(cls.__name__) + ".json"
         try:
-            with open(filename, "r") as jsonfile:
+            with open(fname, "r") as jsonfile:
                 list_dicts = Base.from_json_string(jsonfile.read())
                 return [cls.create(**d) for d in list_dicts]
         except IOError:
